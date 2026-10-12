@@ -1,0 +1,14 @@
+[Unit]
+Description=Surface Laptop 3: 禁用 BD PROCHOT（根治随机锁 200MHz）
+Documentation=https://github.com/fralapo/Disable-BD-PROCHOT-on-LINUX
+After=multi-user.target
+ConditionPathExists=/usr/local/bin/disable-bd-prochot.sh
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/disable-bd-prochot.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=Surface Laptop 3: 睡眠/休眠恢复后再次禁用 BD PROCHOT
+Documentation=https://github.com/fralapo/Disable-BD-PROCHOT-on-LINUX
+After=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+ConditionPathExists=/usr/local/bin/disable-bd-prochot.sh
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/disable-bd-prochot.sh
+
+[Install]
+WantedBy=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target

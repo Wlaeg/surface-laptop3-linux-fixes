@@ -1,0 +1,19 @@
+# Runtime / logs
+*.log
+/var/log/
+
+# Editor / OS
+*.swp
+*.swo
+*~
+.DS_Store
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Local test scratch
+/tmp-test/
+*.bak

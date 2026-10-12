@@ -1,0 +1,14 @@
+[Unit]
+Description=Surface Laptop 3: 锁频事件取证监控
+After=multi-user.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/surface-throttle-monitor.sh
+Restart=always
+RestartSec=5
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

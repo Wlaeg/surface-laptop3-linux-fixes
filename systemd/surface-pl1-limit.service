@@ -1,0 +1,11 @@
+[Unit]
+Description=Surface Laptop 3: 将 RAPL PL1 限制为 12.5W，修复 CPU 随机锁 200MHz
+Documentation=https://github.com/linux-surface/linux-surface/issues/1917
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/surface-pl1-limit.sh
+
+[Install]
+WantedBy=multi-user.target

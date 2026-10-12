@@ -1,0 +1,10 @@
+[Unit]
+Description=定期检查 Surface Laptop 3 的 PL1 限制（每 3 分钟纠正一次回弹）
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=3min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

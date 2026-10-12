@@ -1,0 +1,21 @@
+[Unit]
+Description=Surface Laptop 3: 实时按电源预设调整 RAPL PL1
+Documentation=https://github.com/linux-surface/linux-surface/issues/1917
+StartLimitIntervalSec=0
+
+# 注意：这里【不要】写 After=/Wants=power-profiles-daemon.service。
+# 加了会形成 ordering cycle：
+#   multi-user.target/stop → power-profiles-daemon/stop
+#     → surface-pl1-watch/stop → multi-user.target
+# systemd 为打破死循环会直接丢掉本服务，导致重启后根本不启动。
+# 脚本自身已能处理 ppd 未就绪的情况（连不上 D-Bus 就每 5 秒重试），
+# 因此无需声明依赖。
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/surface-pl1-watch.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
